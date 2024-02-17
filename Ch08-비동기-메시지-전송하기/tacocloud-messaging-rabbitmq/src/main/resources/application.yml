@@ -1,0 +1,14 @@
+spring:
+  profiles: prod
+  rabbitmq:
+    host: rabbit.tacocloud.com
+    port: 5673
+    username: tacoweb
+    password: l3tm31n
+    template:
+      # 이렇게 하면 거래소를 지정하지 않은 모든 메시지는 이름이 exchange로 자동으로 전송된다
+      # 만약 send()나 convertAndSend()를 호출할 때 라우팅 키도 지정되지 않으면 routing-key를 라우팅 키로 갖는다
+      exchange: tacocloud.orders
+      routing-key: kitchens.central
+      # 만약 지연을 목쵸로 할 것이라면 이런 설정을 넣는다. 아래 설정은 30초를 기다리는 것이다(쩡확히는 3만 밀리초)
+      receive-timeout: 30000

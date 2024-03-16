@@ -23,14 +23,14 @@ import lombok.Data;
 @Table("tacos")
 public class Taco {
 
-  @PrimaryKeyColumn(type=PrimaryKeyType.PARTITIONED)
+  @PrimaryKeyColumn(type=PrimaryKeyType.PARTITIONED)  //파티션 키를 정의한다
   private UUID id = UUIDs.timeBased();
   
   @NotNull
   @Size(min = 5, message = "Name must be at least 5 characters long")
   private String name;
   
-  @PrimaryKeyColumn(type=PrimaryKeyType.CLUSTERED,
+  @PrimaryKeyColumn(type=PrimaryKeyType.CLUSTERED,  //클러스터링 키를 정의한다
                     ordering=Ordering.DESCENDING)
   private Date createdAt = new Date();
   
